@@ -1,0 +1,162 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-image: url("notepad-calculator-with-felt-pens-arranged-written-chalkboard.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed; */
+
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  min-width: 24rem;
+  height: 32rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.title-container {
+  margin: 20px;
+}
+
+.header {
+  padding: 10px;
+  text-decoration: underline;
+}
+
+.calculator-container {
+  min-height: 20rem;
+  min-width: 7rem;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  /* box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  box-shadow: inset 0px 1px 5px #000000, 0px 1px 1px #333;
+  padding: 12px;
+}
+
+.display-screen {
+  width: 100%;
+  height: 4rem;
+  margin-top: 10px;
+  border: 1px solid black;
+  background-color: rgb(225, 230, 223);
+  border-radius: 2px;
+  font-size: 1.8rem;
+  padding: 10px;
+  padding-top: 18px;
+  text-align: right;
+
+  outline: none;
+}
+
+.clear-container {
+  display: flex;
+  gap: 8px;
+}
+
+.clear {
+  margin-top: 9px;
+  padding: 10px;
+  width: 7.8rem;
+  text-align: center;
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.nums_and_operators--container {
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  height: 12rem;
+  justify-content: space-between;
+}
+
+.btn {
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.5);
+  padding: 0.8rem 1.48rem;
+}
+
+.operator {
+  background-color: rgb(252, 210, 132);
+}
+
+.operator.equals {
+  background-color: rgb(199, 199, 199);
+}
+
+.buttons-row1 {
+  display: flex;
+  width: 100%;
+  gap: 0.47rem;
+}
+
+.buttons-row2 {
+  display: flex;
+  width: 100%;
+  gap: 0.47rem;
+}
+
+.buttons-row3 {
+  display: flex;
+  width: 100%;
+  gap: 0.47rem;
+}
+
+.minus {
+  padding-right: 1.6rem;
+}
+
+.buttons-row4 {
+  display: flex;
+  width: 100%;
+
+  gap: 0.5rem;
+}
+
+.btn.point {
+  padding-right: 1.26rem;
+  padding-left: 1.9rem;
+}
+
+.btn.add {
+  padding-right: 1.19rem;
+  padding-left: 1.6rem;
+}
+
+.clear:hover {
+  background-color: rgb(250, 229, 226);
+}
+
+.btn:hover {
+  background-color: rgb(214, 207, 211);
+}
+
+.operator:hover {
+  background-color: rgb(241, 136, 55);
+}
+
+.operator.equals:hover {
+  background-color: rgb(109, 106, 103);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 15px;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  /* overflow: auto; */
+}
