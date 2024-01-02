@@ -7,37 +7,45 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <header class="title-container">
-      <h1 class="header">my calculator</h1>
-    </header>
+    <div class="container">
+      <header class="title-container">
+        <h1 class="header">my calculator</h1>
+      </header>
+      <main class="calculator-container">
+        <div class="display-screen" contenteditable="true"></div>
 
-    <main class="calculator-container">
-      <div class="display-screen"></div>
-      <div class="buttons-container">
         <div class="clear-container">
-          <button class="clear-button">Clear</button>
-          <button class="delete-button">Delete</button>
+          <button class="clear-button clear">Clear</button>
+          <button class="delete-button clear">Delete</button>
         </div>
         <div class="nums_and_operators--container">
-          <button class="number seven">7</button>
-          <button class="number eight">8</button>
-          <button class="number nine">9</button>
-          <button class="operator divide">÷</button>
-          <button class="number four">4</button>
-          <button class="number five">5</button>
-          <button class="number six">6</button>
-          <button class="operator multiply">x</button>
-          <button class="number one">1</button>
-          <button class="number two">2</button>
-          <button class="number three">3</button>
-          <button class="operator minus">-</button>
-          <button class="number zero">0</button>
-          <button class="number point">.</button>
-          <button class="operator equals">=</button>
-          <button class="operator add">+</button>
+          <div class="buttons-row1">
+            <button class="btn number seven">7</button>
+            <button class="btn number eight">8</button>
+            <button class="btn number nine">9</button>
+            <button class="btn operator divide">÷</button>
+          </div>
+          <div class="buttons-row2">
+            <button class="btn number four">4</button>
+            <button class="btn number five">5</button>
+            <button class="btn number six">6</button>
+            <button class="btn operator multiply">x</button>
+          </div>
+          <div class="buttons-row3">
+            <button class="btn number one">1</button>
+            <button class="btn number two">2</button>
+            <button class="btn number three">3</button>
+            <button class="btn operator minus">-</button>
+          </div>
+          <div class="buttons-row4">
+            <button class="btn number zero">0</button>
+            <button class="btn number point">.</button>
+            <button class="btn operator equals">=</button>
+            <button class="btn operator add">+</button>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
     <footer>
       <p>
         made with ❤️ by
