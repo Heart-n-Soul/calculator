@@ -152,6 +152,14 @@ body {
   background-color: rgb(109, 106, 103);
 }
 
+.operator.divide:active,
+.operator.multiply:active,
+.operator.minus:active,
+.operator.add:active {
+  color: #fff;
+  background-color: rgb(241, 136, 55);
+}
+
 footer {
   position: fixed;
   bottom: 0;
