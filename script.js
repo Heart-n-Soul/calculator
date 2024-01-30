@@ -13,7 +13,7 @@ const displayScreen = document.querySelector(".display-screen");
 const equalsButton = document.querySelector(".equals");
 const pointButton = document.querySelector(".point");
 
-const maxCharacters = 16;
+const maxCharacters = 14;
 
 // Event listeners for all events
 
@@ -89,12 +89,16 @@ function evaluate() {
   secondOperand = displayScreen.textContent;
   displayScreen.textContent = roundAnswer(
     solve(currentOperator, firstOperand, secondOperand)
-  ).toLocaleString();
+  );
   currentOperator = null;
 }
 
 function roundAnswer(answer) {
-  return Number(answer.toFixed(6)).toString().slice(0, maxCharacters);
+  const maxDisplayLength = 12;
+  const roundedNumber = Number(answer.toFixed(4));
+  if (answer.toString().length >= maxDisplayLength) {
+    return roundedNumber.toExponential(5).slice(0, maxCharacters);
+  } else return roundedNumber.toLocaleString().slice(0, maxCharacters);
 }
 
 function handleKeyboardInput(e) {
