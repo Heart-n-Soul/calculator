@@ -3,6 +3,7 @@
 let firstOperand = "";
 let secondOperand = "";
 let currentOperator = null;
+let shouldResetScreen = false;
 
 const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
@@ -33,6 +34,7 @@ pointButton.addEventListener("click", appendDecimal);
 equalsButton.addEventListener("click", evaluate);
 
 function appendDecimal() {
+  if (shouldResetScreen) resetScreen();
   if (displayScreen.textContent === "") displayScreen.textContent = "0";
   if (displayScreen.textContent.includes(".")) return;
   if (displayScreen.textContent.length >= maxCharacters) return;
@@ -41,10 +43,16 @@ function appendDecimal() {
 
 function appendNumber() {
   const currentContent = displayScreen.textContent;
-  if (currentContent === 0 || currentContent === "0")
-    displayScreen.textContent = "";
+  if (currentContent === 0 || currentContent === "0" || shouldResetScreen)
+    resetScreen();
+  // displayScreen.textContent = "";
   if (currentContent.length < maxCharacters)
     displayScreen.textContent += this.textContent;
+}
+
+function resetScreen() {
+  displayScreen.textContent = "";
+  shouldResetScreen = false;
 }
 
 function clearScreen() {
@@ -60,42 +68,26 @@ function deleteCharacter() {
   displayScreen.textContent = newContent;
 }
 
-//when operator is selected
-//first operand should store screen
-//content
-//operator should be set
-//screen content should be reset
-//when operator is clicked again
-//or equal is clicked
-//it should assign current screencontent
-//to second operand, and evaluate
-//display the solution
-//assign the solution to first operand
-//clear second operand
 function setOperator() {
   console.log(this.textContent);
 
-  if (firstOperand === "") {
-    firstOperand = displayScreen.textContent.replace(/,/g, "");
-    currentOperator = this.textContent;
-    displayScreen.textContent = "";
-  } else if (secondOperand === "") {
-    secondOperand = displayScreen.textContent;
-    evaluate();
-    currentOperator = this.textContent;
-  }
+  if (currentOperator !== null) evaluate();
+  firstOperand = displayScreen.textContent.replace(/,/g, "");
+  currentOperator = this.textContent;
+  shouldResetScreen = true;
 }
 
 function evaluate() {
-  secondOperand = displayScreen.textContent.replace(/,/g, "");
-
-  if (firstOperand !== "" && currentOperator !== null && secondOperand !== "") {
-    const result = solve(currentOperator, firstOperand, secondOperand);
-    firstOperand = result;
-    secondOperand = "";
-    currentOperator = null;
-    displayScreen.textContent = roundAnswer(result).toLocaleString();
+  if (currentOperator === null || shouldResetScreen) return;
+  if (currentOperator === "÷" && displayScreen.textContent === "0") {
+    displayScreen.textContent = "Error";
+    return;
   }
+  secondOperand = displayScreen.textContent;
+  displayScreen.textContent = roundAnswer(
+    solve(currentOperator, firstOperand, secondOperand)
+  ).toLocaleString();
+  currentOperator = null;
 }
 
 function roundAnswer(answer) {
