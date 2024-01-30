@@ -13,20 +13,22 @@ const displayScreen = document.querySelector(".display-screen");
 const equalsButton = document.querySelector(".equals");
 const pointButton = document.querySelector(".point");
 
-const maxCharacters = 14;
+const maxCharacters = 16;
 
 // Event listeners for all events
+
+window.addEventListener("keydown", handleKeyboardInput);
 
 clearButton.addEventListener("click", clearScreen);
 
 deleteButton.addEventListener("click", deleteCharacter);
 
 operators.forEach((operator) => {
-  operator.addEventListener("click", setOperator);
+  operator.addEventListener("click", () => setOperator(operator.textContent));
 });
 
 numberButtons.forEach((button) => {
-  button.addEventListener("click", appendNumber);
+  button.addEventListener("click", () => appendNumber(button.textContent));
 });
 
 pointButton.addEventListener("click", appendDecimal);
@@ -41,13 +43,14 @@ function appendDecimal() {
   displayScreen.textContent += ".";
 }
 
-function appendNumber() {
+function appendNumber(number) {
   const currentContent = displayScreen.textContent;
   if (currentContent === 0 || currentContent === "0" || shouldResetScreen)
     resetScreen();
   // displayScreen.textContent = "";
-  if (currentContent.length < maxCharacters)
-    displayScreen.textContent += this.textContent;
+  if (currentContent.length < maxCharacters) {
+    displayScreen.textContent += number;
+  } else return;
 }
 
 function resetScreen() {
@@ -68,12 +71,12 @@ function deleteCharacter() {
   displayScreen.textContent = newContent;
 }
 
-function setOperator() {
-  console.log(this.textContent);
+function setOperator(operator) {
+  console.log(operator);
 
   if (currentOperator !== null) evaluate();
   firstOperand = displayScreen.textContent.replace(/,/g, "");
-  currentOperator = this.textContent;
+  currentOperator = operator;
   shouldResetScreen = true;
 }
 
@@ -91,9 +94,27 @@ function evaluate() {
 }
 
 function roundAnswer(answer) {
-  return Number(answer.toFixed(4).toString().slice(0, maxCharacters));
+  return Number(answer.toFixed(6)).toString().slice(0, maxCharacters);
 }
 
+function handleKeyboardInput(e) {
+  console.log(e.key);
+  if (e.key >= "0" && e.key <= "9") appendNumber(e.key);
+  if (e.key === ".") appendDecimal(e.key);
+  if (e.key === "=" || e.key === "Enter") evaluate();
+  if (e.key === "Delete") resetScreen();
+  if (e.key === "Escape") clearScreen();
+  if (e.key === "Backspace") deleteCharacter();
+  if (e.key === "*" || e.key === "/" || e.key === "+" || e.key === "-")
+    setOperator(convertOperator(e.key));
+}
+
+function convertOperator(operator) {
+  if (operator === "/") return "÷";
+  if (operator === "*") return "x";
+  if (operator === "-") return "-";
+  if (operator === "+") return "+";
+}
 function add(a, b) {
   return a + b;
 }
