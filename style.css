@@ -36,6 +36,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: Arial, sans-serif;
 }
 
 /* A elements that don't have a class get default styles */
@@ -231,4 +232,23 @@ footer {
   /* overflow: auto; */
   position: fixed;
   bottom: 0;
+}
+
+@media only screen and (max-device-width: 375px) and (max-device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* Add your Safari-specific styles here */
+  body {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .calculator-container {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  .display-screen {
+    font-size: 1.4rem; /* Adjust font size for smaller screens */
+  }
+
+  .btn {
+    padding: 0.6rem 1rem; /* Adjust button padding for smaller screens */
+  }
 }
