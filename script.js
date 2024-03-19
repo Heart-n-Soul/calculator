@@ -83,7 +83,8 @@ function setOperator(operator) {
 function evaluate() {
   if (currentOperator === null || shouldResetScreen) return;
   if (currentOperator === "÷" && displayScreen.textContent === "0") {
-    displayScreen.textContent = "Error";
+    displayScreen.textContent = alert("Error! You cannot divide by 0!");
+    clearScreen();
     return;
   }
   secondOperand = displayScreen.textContent;
@@ -97,7 +98,7 @@ function roundAnswer(answer) {
   const maxDisplayLength = 12;
   const roundedNumber = Number(answer.toFixed(4));
   if (answer.toString().length >= maxDisplayLength) {
-    return roundedNumber.toExponential(5).slice(0, maxCharacters);
+    return roundedNumber.toExponential(8).slice(0, maxCharacters);
   } else return roundedNumber.toLocaleString().slice(0, maxCharacters);
 }
 
@@ -155,3 +156,5 @@ function solve(operator, num1, num2) {
       return "Invalid operator!";
   }
 }
+
+window.addEventListener("DOMContentLoaded", clearScreen);
