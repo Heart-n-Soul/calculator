@@ -1,6 +1,10 @@
+#ABOUT
 This is a simple calculator built with html, css, and javascript
 
-# USING KEYBOARD FOR INPUT
+##IMAGE-PREVIEW
+![calculator-image](./calculator-preview.png)
+
+## USING KEYBOARD FOR INPUT
 This calculator also supports keyboard input.
 The following are the keys and their effects:
 
