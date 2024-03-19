@@ -8,8 +8,11 @@ This is a simple calculator built with html, css, and javascript
 This calculator also supports keyboard input.
 The following are the keys and their effects:
 
+### NUMBERS 
+Numbers <b><i>0</i></b> to <b><i>9</i></b> represent number input buttons
+
 ### OPERATORS
-Numbers <b><i>0</i></b> to <b><i>9</i></b> for number inputs
+
 - <b>*</b> for multiplication(x) 
 - <b>/</b> for division(÷)
 - <b>+</b> for addition 
